@@ -15,10 +15,7 @@ jobs:
           python train.py
 
           echo "## Model Metrics" > report.md
-          cat metrics.txt >> report.md
 
-          echo "## Data Viz" >> report.md
-          cml-send-comment report.md
-          
+          cat metrics.txt >> report.md
           #echo "![](./plot.png)" >> report.md
           #cml comment create report.md
