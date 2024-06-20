@@ -3,12 +3,9 @@ on: [push]
 jobs:
   run:
     runs-on: ubuntu-latest
-    #container: docker://dvcorg/cml-py3:latest
+    container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
-      - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v3
-      #- uses: actions/setup-python@v4
-      #- uses: iterative/setup-tools@v1
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -22,9 +19,8 @@ jobs:
           cat metrics.txt >> report.md
 
           echo "## Model Visulization" >> report.md
-          cml-publish feature_importance.png --md >> report.md
-          cml-publish residuals.png --md >> report.md
-          # echo '![](./feature_importance.png "FeatureImportace")' >> report.md
+          echo '![](./feature_importance.png "FeatureImportace")' >> report.md
+          echo '![](./residuals.png "Residuals")' >> report.md
           # echo "![](./feature_importance.png)" >> report.md
           # echo "![](./residuals.png)" >> report.md
           
