@@ -20,6 +20,8 @@ jobs:
 
           echo "## Model Metrics" > report.md
           cat metrics.txt >> report.md
+
+          echo "## Model Visulization" >> report.md
+          echo '![](./feature_importance.png "FeatureImportace")' >> report.md
           
-          #echo "![](./plot.png)" >> report.md
           cml comment create report.md
