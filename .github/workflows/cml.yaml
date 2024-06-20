@@ -22,6 +22,10 @@ jobs:
           cat metrics.txt >> report.md
 
           echo "## Model Visulization" >> report.md
-          echo '![](./feature_importance.png "FeatureImportace")' >> report.md
+          cml-publish feature_importance.png --md >> report.md
+          cml-publish residuals.png --md >> report.md
+          # echo '![](./feature_importance.png "FeatureImportace")' >> report.md
+          # echo "![](./feature_importance.png)" >> report.md
+          # echo "![](./residuals.png)" >> report.md
           
           cml comment create report.md
